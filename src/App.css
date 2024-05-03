@@ -1,0 +1,87 @@
+*{
+  color: white;
+  font-family: 'Lugrasimo';
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  align-items:center ;
+  background-image: url(/public/img/img_backrgound.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#main_div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.App{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+#titre{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);  
+  height: 12vh;
+  width: 25vw;
+  margin-top: 1vh;
+  margin-bottom: 2vh;
+  border-radius: 20px;
+  border: solid 2px white;
+
+}
+
+#div_images{
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(8, 140px);
+  gap: 3%;
+}
+
+#div_images img{
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  border: double 5px #927c5a;
+}
+
+#div_images img:hover{
+  cursor: pointer;
+}
+
+button{
+  background-color: transparent !important;
+  backdrop-filter: blur(10px);  height: 15vh;
+  margin-top: 6vh;
+  border-radius: 20px;
+  border: solid 2px white !important;
+  height: 8vh;
+  
+}
+
+button:hover{
+  border-color: #927c5a !important;
+  cursor: pointer;
+}
+
+button:active{
+  background-color: #927c5a !important;
+}
