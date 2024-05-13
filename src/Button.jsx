@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 
-function Button({ handleFlipAllCards, setGameStarted, showModalWin, handleModalWin }) {
+function Button({ handleFlipAllCards, setGameStarted, showModalWin }) {
   // Objets pour gérer les textes des boutons
   const buttonSwitch = { button1: "Lancer la partie !", button2: "Abandonner !" };
   // État du texte du bouton
@@ -13,11 +13,20 @@ function Button({ handleFlipAllCards, setGameStarted, showModalWin, handleModalW
   const [showTimer, setShowTimer] = useState(false);
   // État du timer
   const [timer, setTimer] = useState(10);
-  // État du timer de la modal de victoire
-  const [timer2, setTimer2] = useState(0);
   // Variable pour stocker l'ID de l'intervalle
   let interval;
 
+  useEffect(() => {
+    const audio = new Audio("/public/sound_click.mp3");
+    audio.load();
+  }, []);
+
+  // Fonction pour jouer le son
+  const playSound = () => {
+    const audio = new Audio("/public/sound_click.mp3");
+    audio.play();
+  };
+  
   // Effet pour gérer le décompte du timer
   useEffect(() => {
     // Si le bouton est celui de lancement de partie
@@ -50,6 +59,7 @@ function Button({ handleFlipAllCards, setGameStarted, showModalWin, handleModalW
   // Fonction gérant le clic sur le bouton
   function handleClick() {
     if (buttonText === buttonSwitch.button1) {
+      playSound();
       handleFlipAllCards(); // Retourner toutes les cartes
       setTimeout(() => {
         setGameStarted(true); // Démarrer la partie après un délai de 11 secondes
@@ -62,6 +72,7 @@ function Button({ handleFlipAllCards, setGameStarted, showModalWin, handleModalW
       }, 10000)
       setButtonText(buttonSwitch.button2); // Changer le texte du bouton
     } else if (buttonText === buttonSwitch.button2) {
+      playSound();
       setButtonText(buttonSwitch.button1); // Changer le texte du bouton
       setShowModalLose(true); // Afficher la modal de défaite
     }
